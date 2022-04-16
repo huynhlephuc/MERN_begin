@@ -21,3 +21,14 @@ console.log('student: ' , student);
         res.status(409).json( {messages: error.message} );
     }
 }
+
+export const    deleteStudent = async (req, res) => {
+   console.log(req.params.id);
+   try {
+    await StudentData.findOneAndDelete({ _id: req.params.id });
+    res.status(204).json("Xoa thanh cong");
+   } catch (error) {
+       console.log(error.message);
+   }
+}
+
